@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React,{useState, useEffect, Component} from 'react';
+import { StyleSheet, Text, View, Button, ScrollView, FlatList,TouchableOpacity, TouchableWithoutFeedback ,Keyboard} from 'react-native';
+
+
+import Axios from 'axios';
+
+import MyStackNavigator from './routes/stackNavigation';
+
 
 export default function App() {
+  
+ 
+  
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  
+      <View style={styles.container}>
+
+        <MyStackNavigator />
+      </View>
+   
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+      const styles = StyleSheet.create({
+        container: {
+          flex: 1,
+          backgroundColor: '#fff',
+          alignContent:'center',
+          justifyContent:'center'
+        },
+       
+      });

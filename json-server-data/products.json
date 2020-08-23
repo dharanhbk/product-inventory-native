@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "product_name": "Tracks",
+      "id": 1,
+      "quantity": "7",
+      "category": "Clothes",
+      "price": "15"
+    },
+    {
+      "product_name": "Tupperware",
+      "id": 3,
+      "quantity": "16",
+      "category": "Bottles",
+      "price": "20"
+    },
+    {
+      "product_name": "Tshirt",
+      "id": 4,
+      "quantity": "9",
+      "category": "Clothes",
+      "price": "6"
+    },
+    {
+      "product_name": "Bags",
+      "id": 6,
+      "quantity": 1,
+      "category": "Bag",
+      "price": "1"
+    },
+    {
+      "product_name": "Zebra",
+      "id": 7,
+      "quantity": 1,
+      "category": "Bottles",
+      "price": "1"
+    }
+  ]
+}
