@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, Alert } from 'react-native';
+import { View,StyleSheet, Button, Alert } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 export default function Login({navigation}){
@@ -22,7 +22,6 @@ export default function Login({navigation}){
             navigation.navigate('Dashboard')
         }
         else{
-            console.log("fail")
             setValid('false')
             Alert.alert("Invalid User!","Enter valid Login details",[
                 {text:'OK',onPress:()=>console.log("Alert")}

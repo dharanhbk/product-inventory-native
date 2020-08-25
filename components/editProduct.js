@@ -1,34 +1,35 @@
 import React,{useState} from 'react';
-import { View, TextInput, StyleSheet, Button } from 'react-native';
+import { View, TextInput, StyleSheet,Button } from 'react-native';
 import Axios from 'axios';
 
 
+export default function EditProduct(item){
 
+    const detail = item.route.params.item
+    
+    const [name,setName]= useState(detail.product_name);
+    const [category,setCategory]= useState(detail.category);
+    const [price,setPrice]= useState(detail.price);
+    const [quantity,setQuantity]= useState(detail.quantity);
+    const [image,setImage]= useState(detail.image);
 
-
-export default function AddProduct({navigation}){
-
-   
-        
-    const [name,setName]= useState('');
-    const [category,setCategory]= useState('');
-    const [price,setPrice]= useState('');
-    const [quantity,setQuantity]= useState('');
-    const [image,setImage]= useState('');
+    
 
     const submitHandler = (name,image,price,quantity,category)=>{
+        console.log("submit called")
     let newProd= {
+            id:detail.id,
             product_name:name,
             image:image,
             price:price,
             category:category,
             quantity:quantity
         };   
-
-        Axios.post("http://localhost:3000/products",newProd)
-        .then(res=> navigation.navigate('Dashboard'))
-
-    
+    console.log(newProd)
+        Axios.put("http://localhost:3000/products/"+detail.id,newProd)
+        .then(res=>{ 
+            item.navigation.navigate('Dashboard')})
+            .catch(e=>console.log(e))
     }
 
     let nameChangeHandler=(val)=>{
@@ -54,31 +55,36 @@ export default function AddProduct({navigation}){
                 style={mystyle.login}
                 placeholder="Product name"
                 onChangeText={nameChangeHandler}
+                defaultValue={detail.product_name}
             />
              <TextInput
                 style={mystyle.login}
+                defaultValue={detail.category}
                 placeholder="Category"
                 onChangeText={categoryChangeHandler}
             />
             <TextInput
                 style={mystyle.login}
+                defaultValue={detail.quantity}
                 keyboardType='number-pad'
                 placeholder="Quantity"
                 onChangeText={quantityChangeHandler}
             />
             <TextInput
                 style={mystyle.login}
+                defaultValue={detail.price}
                 placeholder="Price"
                 keyboardType='number-pad'
                 onChangeText={priceChangeHandler}
             /> 
             <TextInput
                 style={mystyle.login}
+                defaultValue={detail.image}
                 placeholder="Image URL"
                 onChangeText={handleChoosePhoto}
             />  
             <Button 
-                title='add product'
+                title='Save product'
                 color="coral"
                 onPress={()=>submitHandler(name,image,price,quantity,category)}
             />   
